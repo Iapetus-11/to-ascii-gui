@@ -31,6 +31,7 @@ class App(QWidget):
         self.layout = QGridLayout() # two columns
 
         self.source_label = QLabel('Source: Not Chosen')
+        self.layout.addWidget(self.source_label, 0, 1)
 
         self.camera_button = QPushButton('Use Camera')
         self.camera_button.clicked.connect(lambda: self.option_camera())
@@ -38,8 +39,8 @@ class App(QWidget):
         self.file_button = QPushButton('Choose File')
         self.file_button.clicked.connect(lambda: self.option_file())
 
-        self.layout.addWidget(self.camera_button, 0, 1)
-        self.layout.addWidget(self.file_button, 0, 0)
+        self.layout.addWidget(self.camera_button, 1, 1)
+        self.layout.addWidget(self.file_button, 1, 0)
 
         #self.
 
