@@ -30,11 +30,23 @@ class App(QWidget):
 
         self.layout = QGridLayout() # two columns
 
-        self.layout.addWidget(QRadioButton('Camera'), 0, 0)
-        self.layout.addWidget(QRadioButton('Camera Roll'), 0, 1)
+        self.camera_button = QPushButton('Use Camera')\
+        self.camera_button.clicked.connect(lambda: option_camera())
+
+        self.file_button = QPushButton('Choose File')
+        self.camera_button.clicked.connect(lambda: option_file())
+
+        self.layout.addWidget(self.camera_button, 0, 0)
+        self.layout.addWidget(self.file_button, 0, 1)
 
         self.setLayout(self.layout)
         self.show()
+
+    def option_camera(self):
+        print('camera button')
+
+    def option_file(self):
+        print('file button')
 
 if __name__ == '__main__':
     app = QApplication([])
