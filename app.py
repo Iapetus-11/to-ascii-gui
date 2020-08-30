@@ -51,7 +51,11 @@ class App(QWidget):
         self.source_label.setText('Source: Camera')
 
     def option_file(self):
-        self.source_label.setText('Source: File')
+        options = QFileDialog.Options()
+        options |= QFileDialog.DontUseNativeDialog
+        fileName, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "","All Files (*);;Python Files (*.py)", options=options)
+        if fileName:
+            print(fileName)
 
 if __name__ == '__main__':
     app = QApplication([])
