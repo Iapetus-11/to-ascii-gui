@@ -50,10 +50,10 @@ class App(QWidget):
         self.show()
 
     def option_camera(self):
-        print('camera button')
+        self.source_label_2.setText('Camera')
 
     def option_file(self):
-        print('file button')
+        self.source_label_2.setText('File')
 
 if __name__ == '__main__':
     app = QApplication([])
