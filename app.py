@@ -34,7 +34,7 @@ class App(QWidget):
         self.camera_button.clicked.connect(lambda: self.option_camera())
 
         self.file_button = QPushButton('Choose File')
-        self.camera_button.clicked.connect(lambda: self.option_file())
+        self.file_button.clicked.connect(lambda: self.option_file())
 
         self.layout.addWidget(self.camera_button, 0, 0)
         self.layout.addWidget(self.file_button, 0, 1)
