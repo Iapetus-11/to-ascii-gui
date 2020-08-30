@@ -30,6 +30,8 @@ class App(QWidget):
 
         self.layout = QGridLayout() # two columns
 
+        self.source_label = QLabel('Source: Not Chosen')
+
         self.camera_button = QPushButton('Use Camera')
         self.camera_button.clicked.connect(lambda: self.option_camera())
 
