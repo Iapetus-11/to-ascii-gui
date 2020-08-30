@@ -30,10 +30,8 @@ class App(QWidget):
 
         self.layout = QGridLayout() # two columns
 
-        self.source_label_1 = QLabel('Source:')
-        self.source_label_2 = QLabel('Not Chosen')
-        self.layout.addWidget(self.source_label_1, 0, 0)
-        self.layout.addWidget(self.source_label_2, 0, 1)
+        self.source_label = QLabel('Source: None Chosen')
+        self.layout.addWidget(self.source_label, 0, 0)
 
         self.camera_button = QPushButton('Use Camera')
         self.camera_button.clicked.connect(lambda: self.option_camera())
@@ -50,10 +48,10 @@ class App(QWidget):
         self.show()
 
     def option_camera(self):
-        self.source_label_2.setText('Camera')
+        self.source_label.setText('Source: Camera')
 
     def option_file(self):
-        self.source_label_2.setText('File')
+        self.source_label.setText('Source: File')
 
 if __name__ == '__main__':
     app = QApplication([])
