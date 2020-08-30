@@ -52,9 +52,12 @@ class App(QWidget):
 
     def option_file(self):
         options = QFileDialog.Options()
-        fileName, _ = QFileDialog.getOpenFileName(self, "QFileDialog.getOpenFileName()", "", "Image Files (*.png, *.jpg, *.bmp, *.jpeg);; Video Files (*.avi, *.mp4, *.mov, *.mkv, *.gif, *.mpg, *.mpeg)", options=options)
+        file, _ = QFileDialog.getOpenFileName(self, "QFileDialog.getOpenFileName()", "", "Image Files (*.png, *.jpg, *.bmp, *.jpeg);; Video Files (*.avi, *.mp4, *.mov, *.mkv, *.gif, *.mpg, *.mpeg)", options=options)
 
-        self.source_label.setText(f'Source: {fileName}')
+        if fileName:
+            self._type = 'file'
+            self.filepath = file
+            self.source_label.setText(f'Source: {file}')
 
 if __name__ == '__main__':
     app = QApplication([])
