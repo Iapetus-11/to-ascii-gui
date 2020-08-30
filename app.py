@@ -28,16 +28,16 @@ class App(QWidget):
         self.setWindowTitle(self.title)
         self.setGeometry(self.left, self.top, self.width, self.height)
 
-        self.layout = QHBoxLayout() # two columns
+        self.layout = QGridLayout() # two columns
 
-        self.layout.addWidget(QRadioButton('Camera'))
-        self.layout.addWidget(QRadioButton('Camera Roll'))
+        self.layout.addWidget(QRadioButton('Camera'), 0, 0)
+        self.layout.addWidget(QRadioButton('Camera Roll'), 0, 1)
 
         self.setLayout(self.layout)
-        
         self.show()
 
 if __name__ == '__main__':
     app = QApplication([])
+    app.setStyle('Fusion')
     ex = App()
     sys.exit(app.exec_())
