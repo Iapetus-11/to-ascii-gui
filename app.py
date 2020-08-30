@@ -13,8 +13,8 @@ class App(QWidget):
         self.top = 50
 
         # window dimensions
-        self.width = 640
-        self.height = 480
+        self.width = 600
+        self.height = 800
 
         self.filepath = None  # required
         self._type = None  # required
@@ -36,8 +36,10 @@ class App(QWidget):
         self.file_button = QPushButton('Choose File')
         self.file_button.clicked.connect(lambda: self.option_file())
 
-        self.layout.addWidget(self.camera_button, 0, 0)
-        self.layout.addWidget(self.file_button, 0, 1)
+        self.layout.addWidget(self.camera_button, 0, 1)
+        self.layout.addWidget(self.file_button, 0, 0)
+
+        self.
 
         self.setLayout(self.layout)
         self.show()
