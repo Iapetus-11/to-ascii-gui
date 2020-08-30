@@ -13,8 +13,8 @@ class App(QWidget):
         self.top = 50
 
         # window dimensions
-        self.width = 600
-        self.height = 800
+        self.width = 300
+        self.height = 400
 
         self.filepath = None  # required
         self._type = None  # required
@@ -39,7 +39,7 @@ class App(QWidget):
         self.layout.addWidget(self.camera_button, 0, 1)
         self.layout.addWidget(self.file_button, 0, 0)
 
-        self.
+        #self.
 
         self.setLayout(self.layout)
         self.show()
