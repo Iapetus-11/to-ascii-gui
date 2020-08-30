@@ -30,7 +30,7 @@ class App(QWidget):
 
         self.layout = QGridLayout() # two columns
 
-        self.camera_button = QPushButton('Use Camera')\
+        self.camera_button = QPushButton('Use Camera')
         self.camera_button.clicked.connect(lambda: option_camera())
 
         self.file_button = QPushButton('Choose File')
