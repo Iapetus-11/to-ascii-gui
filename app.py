@@ -58,7 +58,7 @@ class App(QWidget):
             self._type = 'file'
             self.filepath = file
 
-            file = file if len(file) < 10 else file[:7] + '...'
+            file = file if len(file) < 10 else file[7:] + '...'
 
             self.source_label.setText(f'Source: {file}')
 
