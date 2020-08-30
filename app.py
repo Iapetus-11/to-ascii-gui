@@ -54,7 +54,7 @@ class App(QWidget):
         options = QFileDialog.Options()
         file, _ = QFileDialog.getOpenFileName(self, "QFileDialog.getOpenFileName()", "", "Image Files (*.png *.jpg *.bmp *.jpeg);;Video Files (*.avi *.mp4 *.mov *.mkv *.gif *.mpg *.mpeg)", options=options)
 
-        if fileName:
+        if file:
             self._type = 'file'
             self.filepath = file
             self.source_label.setText(f'Source: {file}')
