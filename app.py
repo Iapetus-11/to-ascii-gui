@@ -52,6 +52,10 @@ class App(QWidget):
         self.scale_label = QLabel('Scale 1.00x')
         self.sub_layouts[2].addWidget(self.scale_label)
 
+        self.show_button = QPushButton('Show ASCII')
+        self.show_button.clicked.connect(lambda: self.connect_show_button())
+        self.sub_layouts[3].addWidget(self.show_button)
+
         for sub_layout in self.sub_layouts:
             self.layout.addLayout(sub_layout)
 
@@ -82,6 +86,9 @@ class App(QWidget):
             self.scale_label.setText('Scale: {:1.2f}x'.format((value + 1) / 100))
         except AttributeError:
             pass
+
+    def connect_show_button(self):
+        pass
 
 if __name__ == '__main__':
     app = QApplication([])
