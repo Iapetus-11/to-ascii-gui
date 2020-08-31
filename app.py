@@ -42,10 +42,13 @@ class App(QWidget):
         self.file_button.clicked.connect(lambda: self.connect_source_button('file'))
         self.layout.addWidget(self.file_button, 1, 0)
 
-        #self.scale_label = QLabel('Scale: 1x')
         self.scale_slider = QSlider(Qt.Horizontal)
         self.scale_slider.valueChanged[int].connect(self.connect_scale_slider)
-        self.layout.addWidget(self.scale_slider)
+        self.scale_slider.setValue(100)
+        self.layout.addWidget(self.scale_slider, 2, 0)
+
+        self.scale_label = QLabel('Scale 1x')
+        self.layout.addWidget(self.scale_label, 2, 1)
 
         self.setLayout(self.layout)
         self.show()
@@ -71,7 +74,7 @@ class App(QWidget):
                 self.source_label.setText(f'Source: {file}')
 
     def connect_scale_slider(self, value):
-        print(value)
+        self.scale_label.setText((value + 1) / 100)
 
 if __name__ == '__main__':
     app = QApplication([])
