@@ -5,7 +5,7 @@ import toascii
 import time
 import sys
 
-class ResultWindow(QWidget):
+"""class ResultWindow(QWidget):
     def __init__(self, kwargs):
         QWidget.__init__(self)
 
@@ -60,7 +60,7 @@ class ResultWindow(QWidget):
             time.sleep(.05) # 20 fps I think
 
             self.show_label.setText(img)
-
+"""
 
 class App(QWidget):
     def __init__(self, app):
