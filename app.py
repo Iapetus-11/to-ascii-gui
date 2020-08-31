@@ -6,26 +6,18 @@ import time
 import sys
 
 class ResultWindow(QWidget):
-    def __init__(self, app):
+    def __init__(self, kwargs):
         QWidget.__init__(self)
 
-        self.app = app
-        self.app_palette = QPalette()
+        for kwarg in list(kwargs):
+            self.__dict__[kwarg] = kwargs[kwarg]
 
         self.title = 'Viewer'
 
         self.left = 100
         self.top = 100
 
-        self.width = 300
-        self.height = 10
-
         self.ascii_obj = None
-        self.filepath = None
-        self._type = None
-        self.scale = 1
-        self.gradient = 0
-        self.fps = 30
 
         self.init()
 
@@ -91,6 +83,8 @@ class App(QWidget):
         self.scale = 1
         self.gradient = 0
         self.fps = 30
+
+        self.res_window = None
 
         self.init()
 
@@ -177,7 +171,8 @@ class App(QWidget):
             pass
 
     def connect_show_button(self):
-        pass
+        self.res_window = ResultWindow(self.__dict__)
+        self.res_window.show()
 
 if __name__ == '__main__':
     main = QApplication([])
