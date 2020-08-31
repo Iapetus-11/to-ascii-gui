@@ -74,7 +74,10 @@ class App(QWidget):
                 self.source_label.setText(f'Source: {file}')
 
     def connect_scale_slider(self, value):
-        self.scale_label.setText((value + 1) / 100)
+        try:
+            self.scale_label.setText((value + 1) / 100)
+        except AttributeError:
+            pass
 
 if __name__ == '__main__':
     app = QApplication([])
