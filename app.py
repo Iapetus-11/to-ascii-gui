@@ -142,7 +142,6 @@ class App(QWidget):
             self.layout.addLayout(sub_layout)
 
         self.setLayout(self.layout)
-        self.setFixedSize(self.width(), self.height())
         self.show()
 
     def connect_source_button(self, _type):
