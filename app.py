@@ -45,8 +45,29 @@ class ResultWindow(QWidget):
         if self._type != 'live':
             self.ascii_obj.convert()
 
-    def view(self):
-        pass
+        self.show()
+
+    def show(self):
+        QWidget.show(self)
+
+        if self._type == 'live':
+            self.view_live()
+        elif self._type == 'video':
+            self.view_video()
+        elif self._type == 'image':
+            self.view_image()
+
+    def view_live(self):
+        while True:
+            start = time.perf_counter()
+
+            img = self.ascii_obj.fetch_frame()  # returns text
+
+            diff = start - time.perf_counter()
+            time.sleep((spf - diff + abs(spf - diff)) / 2)
+
+            self.show_label.setText(img)
+
 
 class App(QWidget):
     def __init__(self, app):
