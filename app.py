@@ -172,8 +172,11 @@ class App(QWidget):
             pass
 
     def connect_show_button(self):
-        self.res_window = ResultWindow(self.__dict__)
-        self.res_window.show()
+        #self.res_window = ResultWindow(self.__dict__)
+        #self.res_window.show()
+
+        if self.filepath is None:
+            pass
 
 if __name__ == '__main__':
     main = QApplication([])
