@@ -23,7 +23,7 @@ import sys
 
     def init(self):
         self.setWindowTitle(self.title)
-        self.setGeometry(self.left, self.top, self.width, self.height)
+        self.setGeometry(self.left, self.top, self._width, self._height)
 
         if self._type == 'image':
             self.ascii_obj = toascii.Image(self.filepath, scale=self.scale, gradient=self.gradient)
@@ -32,7 +32,7 @@ import sys
         elif self._type == 'live':
             self.ascii_obj = toascii.Live(self.filepath, scale=self.scale, gradient=self.gradient, fps=self.fps)
 
-        self.show_label = QLabel(f'\n{" "*self.ascii_obj.scaled_width}'*self.ascii_obj.scaled_height)
+        self.show_label = QLabel(f'\n{" "*self.ascii_obj.scaled__width}'*self.ascii_obj.scaled__height)
 
         if self._type != 'live':
             self.ascii_obj.convert()
@@ -76,8 +76,8 @@ class App(QWidget):
         self.top = 50
 
         # window dimensions
-        self.width = 300
-        self.height = 10
+        self._width = 300
+        self._height = 10
 
         self.filepath = None  # required
         self._type = None  # required
@@ -109,7 +109,7 @@ class App(QWidget):
         self.app.setStyleSheet("QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }")
 
         self.setWindowTitle(self.title)
-        self.setGeometry(self.left, self.top, self.width, self.height)
+        self.setGeometry(self.left, self.top, self._width, self._height)
 
         #self.layout = QGridLayout() # two columns
         self.layout = QVBoxLayout()
