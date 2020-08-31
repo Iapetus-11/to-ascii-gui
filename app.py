@@ -2,6 +2,7 @@ from PyQt5.QtGui import QPalette, QColor
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
 import toascii
+import time
 import sys
 
 class ResultWindow(QWidget):
@@ -40,6 +41,12 @@ class ResultWindow(QWidget):
             self.ascii_obj = toascii.Live(self.filepath, scale=self.scale, gradient=self.gradient, fps=self.fps)
 
         self.show_label = QLabel(f'\n{" "*self.ascii_obj.scaled_width}'*self.ascii_obj.scaled_height)
+
+        if self._type != 'live':
+            self.ascii_obj.convert()
+
+    def view(self):
+        pass
 
 class App(QWidget):
     def __init__(self, app):
