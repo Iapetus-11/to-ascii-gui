@@ -4,9 +4,10 @@ from PyQt5.QtCore import Qt
 import toascii
 import sys
 
+
 class App(QWidget):
     def __init__(self, app):
-        super().__init__()
+        QWidget.__init__(self)
 
         self.app = app
         self.app_palette = QPalette()
@@ -91,7 +92,7 @@ class App(QWidget):
             self.filepath = 0
             self._type = 'live'
         elif _type == 'file':
-            file, _ = QFileDialog.getOpenFileName(self, 'Choose a file', '', 'Image Files (*.png *.jpg *.bmp *.jpeg);;Video Files (*.avi *.mp4 *.mov *.mkv *.gif *.mpg *.mpeg)')
+            file, _ = QFileDialog.getOpenFileName(self, 'Choose a file', '', 'Image Files (*.png *.jpg *.bmp *.jpeg);;Video Files (*.avi *.mp4 *.mov *.mkv *.gif *.mpg *.mpeg)', options=QFileDialog.Options())
 
             if file:
                 if file[-3:] in ('png', 'jpg', 'bmp', 'jpe'):
@@ -116,6 +117,6 @@ class App(QWidget):
         pass
 
 if __name__ == '__main__':
-    app = QApplication([])
-    ex = App(app)
-    sys.exit(app.exec_())
+    main = QApplication([])
+    app = App(main)
+    main.exec()
