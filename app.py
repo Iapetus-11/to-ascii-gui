@@ -1,4 +1,5 @@
 from PyQt5.QtWidgets import *
+from PyQt5.QtCore import Qt
 import toascii
 import sys
 
@@ -14,7 +15,7 @@ class App(QWidget):
 
         # window dimensions
         self.width = 300
-        self.height = 400
+        self.height = 10
 
         self.filepath = None  # required
         self._type = None  # required
@@ -34,37 +35,45 @@ class App(QWidget):
         self.layout.addWidget(self.source_label, 0, 0)
 
         self.camera_button = QPushButton('Use Camera')
-        self.camera_button.clicked.connect(lambda: self.option_camera())
+        self.camera_button.clicked.connect(lambda: self.connect_source_button('live'))
 
         self.file_button = QPushButton('Choose File')
-        self.file_button.clicked.connect(lambda: self.option_file())
+        self.file_button.clicked.connect(lambda: self.connect_source_button('file'))
 
         self.layout.addWidget(self.camera_button, 1, 1)
         self.layout.addWidget(self.file_button, 1, 0)
 
-        #self.
+        self.scale_label = QLabel('Scale: 1x')
+        self.scale_slider = QSlider(Qt.Horizontal)
+        self.scale_slider.valueChanged[int].connect(self.connect_scale_slider)
 
         self.setLayout(self.layout)
         self.show()
 
-    def option_camera(self):
-        self.source_label.setText('Source: Camera')
-        self._type = 'live'
+    def connect_source_button(self, _type):
+        if _type == 'live':
+            self.source_label.setText('Source: Camera')
+            self._type = 'live'
+        elif _type == 'file':
+            options = QFileDialog.Options()
+            file, _ = QFileDialog.getOpenFileName(self, "Choose a file", "", "Image Files (*.png *.jpg *.bmp *.jpeg);;Video Files (*.avi *.mp4 *.mov *.mkv *.gif *.mpg *.mpeg)", options=options)
 
-    def option_file(self):
-        options = QFileDialog.Options()
-        file, _ = QFileDialog.getOpenFileName(self, "Choose a file", "", "Image Files (*.png *.jpg *.bmp *.jpeg);;Video Files (*.avi *.mp4 *.mov *.mkv *.gif *.mpg *.mpeg)", options=options)
+            if file:
+                if file[-3:] in ('png', 'jpg', 'bmp', 'jpe'):
+                    self._type = 'image'
+                else:
+                    self._type = 'video'
 
-        if file:
-            self._type = 'file'
-            self.filepath = file
+                self.filepath = file
 
-            file = file if len(file) < 20 else '...' + file[-17:]
+                file = file if len(file) < 20 else '...' + file[-17:]
 
-            self.source_label.setText(f'Source: {file}')
+                self.source_label.setText(f'Source: {file}')
+
+    def connect_scale_slider(self, value):
+        print(value)
 
 if __name__ == '__main__':
     app = QApplication([])
-    app.setStyle('Fusion')
     ex = App()
     sys.exit(app.exec_())
