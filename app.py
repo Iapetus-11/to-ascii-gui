@@ -11,6 +11,36 @@ class ResultWindow(QWidget):
         self.app = app
         self.app_palette = QPalette()
 
+        self.title = 'Viewer'
+
+        self.left = 100
+        self.top = 100
+
+        self.width = 300
+        self.height = 10
+
+        self.ascii_obj = None
+        self.filepath = None
+        self._type = None
+        self.scale = 1
+        self.gradient = 0
+        self.fps = 30
+
+        self.init()
+
+    def init(self):
+        self.setWindowTitle(self.title)
+        self.setGeometry(self.left, self.top, self.width, self.height)
+
+        if self._type == 'image':
+            self.ascii_obj = toascii.Image(self.filepath, scale=self.scale, gradient=self.gradient)
+        elif self._type == 'video':
+            self.ascii_obj = toascii.Video(self.filepath, scale=self.scale, gradient=self.gradient)
+        elif self._type == 'live':
+            self.ascii_obj = toascii.Live(self.filepath, scale=self.scale, gradient=self.gradient, fps=self.fps)
+
+        self.show_label = QLabel(f'\n{" "*self.ascii_obj.scaled_width}'*self.ascii_obj.scaled_height)
+
 class App(QWidget):
     def __init__(self, app):
         QWidget.__init__(self)
@@ -34,10 +64,9 @@ class App(QWidget):
         self.gradient = 0
         self.fps = 30
 
-        self.initUI()
+        self.init()
 
-    def initUI(self):
-
+    def init(self):
         # Dark mode fusion
         self.app.setStyle("Fusion")
         self.app_palette.setColor(QPalette.Window, QColor(53, 53, 53))
