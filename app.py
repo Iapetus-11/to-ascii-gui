@@ -46,7 +46,7 @@ class App(QWidget):
         self.app_palette.setColor(QPalette.Link, QColor(42, 130, 218))
         self.app_palette.setColor(QPalette.Highlight, QColor(42, 130, 218))
         self.app_palette.setColor(QPalette.HighlightedText, Qt.black)
-        self.app.setPalette(dark_palette)
+        self.app.setPalette(self.app_palette)
         self.app.setStyleSheet("QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }")
 
         self.setWindowTitle(self.title)
