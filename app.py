@@ -4,6 +4,12 @@ from PyQt5.QtCore import Qt
 import toascii
 import sys
 
+class ResultWindow(QWidget):
+    def __init__(self, app):
+        QWidget.__init__(self)
+
+        self.app = app
+        self.app_palette = QPalette()
 
 class App(QWidget):
     def __init__(self, app):
