@@ -1,11 +1,15 @@
+from PyQt5.QtGui import QPalette
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
 import toascii
 import sys
 
 class App(QWidget):
-    def __init__(self):
+    def __init__(self, app):
         super().__init__()
+
+        self.app = app
+        self.app_palette = QPalette()
 
         self.title = 'To-ASCII'
 
@@ -26,6 +30,25 @@ class App(QWidget):
         self.initUI()
 
     def initUI(self):
+
+        # Dark mode fusion
+        self.app.setStyle("Fusion")
+        self.app_palette.setColor(QPalette.Window, QColor(53, 53, 53))
+        self.app_palette.setColor(QPalette.WindowText, Qt.white)
+        self.app_palette.setColor(QPalette.Base, QColor(25, 25, 25))
+        self.app_palette.setColor(QPalette.AlternateBase, QColor(53, 53, 53))
+        self.app_palette.setColor(QPalette.ToolTipBase, Qt.white)
+        self.app_palette.setColor(QPalette.ToolTipText, Qt.white)
+        self.app_palette.setColor(QPalette.Text, Qt.white)
+        self.app_palette.setColor(QPalette.Button, QColor(53, 53, 53))
+        self.app_palette.setColor(QPalette.ButtonText, Qt.white)
+        self.app_palette.setColor(QPalette.BrightText, Qt.red)
+        self.app_palette.setColor(QPalette.Link, QColor(42, 130, 218))
+        self.app_palette.setColor(QPalette.Highlight, QColor(42, 130, 218))
+        self.app_palette.setColor(QPalette.HighlightedText, Qt.black)
+        self.app.setPalette(dark_palette)
+        self.app.setStyleSheet("QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }")
+
         self.setWindowTitle(self.title)
         self.setGeometry(self.left, self.top, self.width, self.height)
 
@@ -94,8 +117,5 @@ class App(QWidget):
 
 if __name__ == '__main__':
     app = QApplication([])
-    app.setStyle('Fusion')
-    app.setColor(QPallette.ButtonText, Qt.white)
-    app.setColor(QPallette.Background, Qt.black)
-    ex = App()
+    ex = App(app)
     sys.exit(app.exec_())
