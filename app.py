@@ -95,5 +95,7 @@ class App(QWidget):
 if __name__ == '__main__':
     app = QApplication([])
     app.setStyle('Fusion')
+    app.setColor(QPallette.ButtonText, Qt.white)
+    app.setColor(QPallette.Background, Qt.black)
     ex = App()
     sys.exit(app.exec_())
