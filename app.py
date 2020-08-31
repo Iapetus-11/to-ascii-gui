@@ -110,6 +110,7 @@ class App(QWidget):
 
         self.setWindowTitle(self.title)
         self.setGeometry(self.left, self.top, self.width, self.height)
+        self.setFixedSize(self.width, self.height)
 
         #self.layout = QGridLayout() # two columns
         self.layout = QVBoxLayout()
