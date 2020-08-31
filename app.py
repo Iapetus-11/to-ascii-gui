@@ -90,7 +90,7 @@ class App(QWidget):
             pass
 
     def connect_show_button(self):
-
+        pass
 
 if __name__ == '__main__':
     app = QApplication([])
