@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
 import toascii
 import sys
+import os
 
 class App(QWidget):
     def __init__(self):
@@ -65,6 +66,7 @@ class App(QWidget):
     def connect_source_button(self, _type):
         if _type == 'live':
             self.source_label.setText('Source: Camera')
+            self.filepath = 0
             self._type = 'live'
         elif _type == 'file':
             file, _ = QFileDialog.getOpenFileName(self, "Choose a file", "", "Image Files (*.png *.jpg *.bmp *.jpeg);;Video Files (*.avi *.mp4 *.mov *.mkv *.gif *.mpg *.mpeg)")
@@ -83,12 +85,13 @@ class App(QWidget):
 
     def connect_scale_slider(self, value):
         try:
-            self.scale_label.setText('Scale: {:1.2f}x'.format((value + 1) / 100))
+            self.scale = (value + 1) / 100)
+            self.scale_label.setText('Scale: {:1.2f}x'.format(self.scale)
         except AttributeError:
             pass
 
     def connect_show_button(self):
-        pass
+        os.system(f'to-ascii -t {self._type} -f {self.filepath} -s {self.scale} -r 30 -g 1 && pause > nul')
 
 if __name__ == '__main__':
     app = QApplication([])
