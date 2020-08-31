@@ -51,12 +51,13 @@ class ResultWindow(QWidget):
 
     def view_live(self):
         while True:
-            start = time.perf_counter()
+            #start = time.perf_counter()
 
             img = self.ascii_obj.fetch_frame()  # returns text
 
-            diff = start - time.perf_counter()
-            time.sleep((spf - diff + abs(spf - diff)) / 2)
+            #diff = start - time.perf_counter()
+            #time.sleep((spf - diff + abs(spf - diff)) / 2)
+            time.sleep(.05) # 20 fps I think
 
             self.show_label.setText(img)
 
