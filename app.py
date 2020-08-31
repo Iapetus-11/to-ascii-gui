@@ -91,7 +91,7 @@ class App(QWidget):
             self.filepath = 0
             self._type = 'live'
         elif _type == 'file':
-            file, _ = QFileDialog.getOpenFileName(self, "Choose a file", "", "Image Files (*.png *.jpg *.bmp *.jpeg);;Video Files (*.avi *.mp4 *.mov *.mkv *.gif *.mpg *.mpeg)")
+            file, _ = QFileDialog.getOpenFileName(self, 'Choose a file', '', 'Image Files (*.png *.jpg *.bmp *.jpeg);;Video Files (*.avi *.mp4 *.mov *.mkv *.gif *.mpg *.mpeg)')
 
             if file:
                 if file[-3:] in ('png', 'jpg', 'bmp', 'jpe'):
