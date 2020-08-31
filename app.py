@@ -49,7 +49,7 @@ class App(QWidget):
         self.scale_slider.setValue(100)
         self.sub_layouts[2].addWidget(self.scale_slider)
 
-        self.scale_label = QLabel('Scale 1.0x')
+        self.scale_label = QLabel('Scale 1.00x')
         self.sub_layouts[2].addWidget(self.scale_label)
 
         for sub_layout in self.sub_layouts:
