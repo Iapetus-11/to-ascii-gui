@@ -110,7 +110,6 @@ class App(QWidget):
 
         self.setWindowTitle(self.title)
         self.setGeometry(self.left, self.top, self.width, self.height)
-        self.setFixedSize(self.width, self.height)
 
         #self.layout = QGridLayout() # two columns
         self.layout = QVBoxLayout()
@@ -143,6 +142,7 @@ class App(QWidget):
             self.layout.addLayout(sub_layout)
 
         self.setLayout(self.layout)
+        self.setFixedSize(self.width, self.height)
         self.show()
 
     def connect_source_button(self, _type):
