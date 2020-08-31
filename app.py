@@ -2,7 +2,6 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
 import toascii
 import sys
-import os
 
 class App(QWidget):
     def __init__(self):
@@ -91,7 +90,7 @@ class App(QWidget):
             pass
 
     def connect_show_button(self):
-        os.system(f'start to-ascii -t {self._type} -f {self.filepath} -s {self.scale} -r 30 -g 1 && pause > nul')
+        #os.system(f'start to-ascii -t {self._type} -f {self.filepath} -s {self.scale} -r 30 -g 1 && pause > nul')
 
 if __name__ == '__main__':
     app = QApplication([])
