@@ -1,4 +1,4 @@
-from PyQt5.QtGui import QPalette
+from PyQt5.QtGui import QPalette, QColor
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
 import toascii
