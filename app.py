@@ -86,7 +86,7 @@ class App(QWidget):
     def connect_scale_slider(self, value):
         try:
             self.scale = (value + 1) / 100
-            self.scale_label.setText('Scale: {:1.2f}x'.format(self.scale)
+            self.scale_label.setText('Scale: {:1.2f}x'.format(self.scale))
         except AttributeError:
             pass
 
