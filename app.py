@@ -31,7 +31,7 @@ class App(QWidget):
 
         #self.layout = QGridLayout() # two columns
         self.layout = QVBoxLayout()
-        self.sub_layouts = [QHBoxLayout(), QHBoxLayout(), QHBoxLayout()]
+        self.sub_layouts = (QHBoxLayout(), QHBoxLayout(), QHBoxLayout(), QHBoxLayout(),)
 
         self.source_label = QLabel('Source: None Chosen')
         self.sub_layouts[0].addWidget(self.source_label)
