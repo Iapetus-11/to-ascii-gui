@@ -29,7 +29,8 @@ class App(QWidget):
         self.setWindowTitle(self.title)
         self.setGeometry(self.left, self.top, self.width, self.height)
 
-        self.layout = QGridLayout() # two columns
+        #self.layout = QGridLayout() # two columns
+        self.layout = QVBoxLayout()
         self.sub_layouts = [QHBoxLayout(), QHBoxLayout(), QHBoxLayout()]
 
         self.source_label = QLabel('Source: None Chosen')
