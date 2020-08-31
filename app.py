@@ -33,23 +33,23 @@ class App(QWidget):
         self.sub_layouts = [QHBoxLayout(), QHBoxLayout(), QHBoxLayout()]
 
         self.source_label = QLabel('Source: None Chosen')
-        self.sub_layouts[0].addWidget(self.source_label, 0, 0)
+        self.sub_layouts[0].addWidget(self.source_label)
 
         self.camera_button = QPushButton('Use Camera')
         self.camera_button.clicked.connect(lambda: self.connect_source_button('live'))
-        self.sub_layouts[1].addWidget(self.camera_button, 1, 1)
+        self.sub_layouts[1].addWidget(self.camera_button)
 
         self.file_button = QPushButton('Choose File')
         self.file_button.clicked.connect(lambda: self.connect_source_button('file'))
-        self.sub_layouts[1].addWidget(self.file_button, 1, 0)
+        self.sub_layouts[1].addWidget(self.file_button)
 
         self.scale_slider = QSlider(Qt.Horizontal)
         self.scale_slider.valueChanged[int].connect(self.connect_scale_slider)
         self.scale_slider.setValue(100)
-        self.sub_layouts[2].addWidget(self.scale_slider, 2, 0)
+        self.sub_layouts[2].addWidget(self.scale_slider)
 
         self.scale_label = QLabel('Scale 1.0x')
-        self.sub_layouts[2].addWidget(self.scale_label, 2, 1)
+        self.sub_layouts[2].addWidget(self.scale_label)
 
         for sub_layout in self.sub_layouts:
             self.layout.addLayout(sub_layout)
