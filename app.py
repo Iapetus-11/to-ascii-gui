@@ -49,6 +49,7 @@ class App(QWidget):
 
     def option_camera(self):
         self.source_label.setText('Source: Camera')
+        self._type = 'live'
 
     def option_file(self):
         options = QFileDialog.Options()
