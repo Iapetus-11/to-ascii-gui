@@ -30,25 +30,29 @@ class App(QWidget):
         self.setGeometry(self.left, self.top, self.width, self.height)
 
         self.layout = QGridLayout() # two columns
+        self.sub_layouts = [QHBoxLayout(), QHBoxLayout(), QHBoxLayout()]
 
         self.source_label = QLabel('Source: None Chosen')
-        self.layout.addWidget(self.source_label, 0, 0)
+        self.sub_layouts[0].addWidget(self.source_label, 0, 0)
 
         self.camera_button = QPushButton('Use Camera')
         self.camera_button.clicked.connect(lambda: self.connect_source_button('live'))
-        self.layout.addWidget(self.camera_button, 1, 1)
+        self.sub_layouts[1].addWidget(self.camera_button, 1, 1)
 
         self.file_button = QPushButton('Choose File')
         self.file_button.clicked.connect(lambda: self.connect_source_button('file'))
-        self.layout.addWidget(self.file_button, 1, 0)
+        self.sub_layouts[1].addWidget(self.file_button, 1, 0)
 
         self.scale_slider = QSlider(Qt.Horizontal)
         self.scale_slider.valueChanged[int].connect(self.connect_scale_slider)
         self.scale_slider.setValue(100)
-        self.layout.addWidget(self.scale_slider, 2, 0)
+        self.sub_layouts[2].addWidget(self.scale_slider, 2, 0)
 
         self.scale_label = QLabel('Scale 1.0x')
-        self.layout.addWidget(self.scale_label, 2, 1)
+        self.sub_layouts[2].addWidget(self.scale_label, 2, 1)
+
+        for sub_layout in self.sub_layouts:
+            self.layout.addLayout(sub_layout)
 
         self.setLayout(self.layout)
         self.show()
@@ -58,8 +62,7 @@ class App(QWidget):
             self.source_label.setText('Source: Camera')
             self._type = 'live'
         elif _type == 'file':
-            options = QFileDialog.Options()
-            file, _ = QFileDialog.getOpenFileName(self, "Choose a file", "", "Image Files (*.png *.jpg *.bmp *.jpeg);;Video Files (*.avi *.mp4 *.mov *.mkv *.gif *.mpg *.mpeg)", options=options)
+            file, _ = QFileDialog.getOpenFileName(self, "Choose a file", "", "Image Files (*.png *.jpg *.bmp *.jpeg);;Video Files (*.avi *.mp4 *.mov *.mkv *.gif *.mpg *.mpeg)")
 
             if file:
                 if file[-3:] in ('png', 'jpg', 'bmp', 'jpe'):
